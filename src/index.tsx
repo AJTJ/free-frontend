@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App/";
+import { CookiesProvider } from "react-cookie";
 
 import {
   ApolloClient,
@@ -21,9 +22,11 @@ const client = new ApolloClient({
 });
 
 const WrappedApp = () => (
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>
+  <CookiesProvider>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </CookiesProvider>
 );
 
 ReactDOM.render(
